@@ -26,7 +26,7 @@ public class MyCollection<T> implements AdvancedList<T>, AuthorHolder {
         }
 
         if (array[index] != null) {
-            for (int i = count; i >= index; i--) {
+            for (int i = count; i > index; i--) {
                 array[i] = array[i - 1];
             }
         }
