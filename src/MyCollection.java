@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.EmptyStackException;
 import java.util.Optional;
@@ -134,7 +135,8 @@ public class MyCollection<T> implements AdvancedList<T>, AuthorHolder {
     public AdvancedList<T> sort(Comparator<T> comparator) {
         MyCollection<T> list = new MyCollection<>();
         TimSort<T> timSort = new TimSort<>(comparator);
-        list.array = this.array.clone();
+        list.array = new Object[maxCount];
+        System.arraycopy(this.array, 0, list.array, 0, count);
         list.count = this.count;
         timSort.timSort(list.array, size());
         return list;
